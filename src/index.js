@@ -1,3 +1,6 @@
+import Hosei from "../hosei.js";
+import RGB from "./rgb.js";
+
 // @ts-check
 export class Cam{
   onerror = (err)=>{}
@@ -100,10 +103,23 @@ class Main{
     document.getElementById("cav")?.appendChild(sc.canvas)
     sc.canvas.getContext('2d').strokeStyle = "white"
 
-    sc.canvas.getContext('2d')?.lineWidth = 5
+    sc.canvas.getContext('2d').lineWidth = 5
     sc.canvas.getContext('2d')?.strokeRect(box.left, box.top, box.right - box.left, box.bottom - box.top)
   }
 }
 window.onload = () => {
-  new Main()
+  const rgb = new RGB()
+  rgb.start()
+  rgb.onexit = (rgb) => {
+    const box = new Hosei(rgb)
+    box.start()
+    box.onexit = (boxA,sizeA) => {
+      const box = new Hosei(rgb)
+      box.start()
+      box.onexit = (boxB, sizeB) => {
+        new Lol({ size: boxA, len: sizeA }, { size: boxB, len: sizeB })
+      }
+    }
+  }
+  //new Main()
 }
