@@ -1,9 +1,9 @@
 // @ts-check
 
-import { Cam, Scan } from "./src"
+import { Cam, Scan } from "./index.js"
 
-export default class Hosei{
-  onexit = (box,len)=>{}
+export default class Hosei {
+  onexit = (box, len) => { }
   constructor(rgb) {
     this.main = document.getElementById("hosei")
     this.errText = this.main?.querySelector(".Id-err")
@@ -38,6 +38,6 @@ export default class Hosei{
     this.main?.classList.add("close")
     const sc = new Scan(this.camera.video)
     const box = sc.scan(this.rgb, { x: 0, y: 0, width: this.camera.video.width, height: this.camera.video.height })
-    this.onexit(box,this.len.value)
+    this.onexit(box, this.len.value)
   }
 }

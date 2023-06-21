@@ -1,4 +1,5 @@
-import Hosei from "../hosei.js";
+import Hosei from "./hosei.js";
+import LenCheck from "./lenCheck.js";
 import RGB from "./rgb.js";
 
 // @ts-check
@@ -117,7 +118,7 @@ window.onload = () => {
       const box = new Hosei(rgb)
       box.start()
       box.onexit = (boxB, sizeB) => {
-        new Lol({ size: boxA, len: sizeA }, { size: boxB, len: sizeB })
+        new LenCheck({ size: boxA, len: sizeA }, { size: boxB, len: sizeB },rgb)
       }
     }
   }
